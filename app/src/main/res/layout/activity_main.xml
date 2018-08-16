@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="@string/current_info"
-        android:textAlignment="center" />
+        android:gravity="start"
+        android:text="@string/current_infos"
+        android:textAlignment="textStart" />
 
     <TextView
         android:id="@+id/tvCurrentVersionName"
@@ -41,8 +41,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@color/colorAccent"
-        android:gravity="center"
-        android:textAlignment="center" />
+        android:gravity="start"
+        android:text="@string/latest_infos"
+        android:textAlignment="textStart" />
 
     <TextView
         android:id="@+id/tvNewVersionName"
