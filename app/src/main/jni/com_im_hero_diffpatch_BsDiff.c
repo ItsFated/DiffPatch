@@ -20,13 +20,13 @@ Java_com_im_1hero_diffpatch_BsDiff_bsdiff(JNIEnv *env, jclass type, jstring oldF
     argv[2] = newFile;
     argv[3] = patchFile;
     LOGI("bsdiff start");
-    bsdiff(argc, argv);
+    int ret = bsdiff(argc, argv);
     LOGI("bsdiff over");
 
     (*env)->ReleaseStringUTFChars(env, oldFile_, oldFile);
     (*env)->ReleaseStringUTFChars(env, newFile_, newFile);
     (*env)->ReleaseStringUTFChars(env, patchFile_, patchFile);
-    return 0;
+    return ret;
 }
 
 JNIEXPORT jint JNICALL
@@ -43,11 +43,11 @@ Java_com_im_1hero_diffpatch_BsDiff_bspatch(JNIEnv *env, jclass type, jstring old
     argv[2] = newFile;
     argv[3] = patchFile;
     LOGI("bspatch start");
-    bspatch(argc, argv);
+    int ret = bspatch(argc, argv);
     LOGI("bspatch over");
 
     (*env)->ReleaseStringUTFChars(env, oldFile_, oldFile);
     (*env)->ReleaseStringUTFChars(env, newFile_, newFile);
     (*env)->ReleaseStringUTFChars(env, patchFile_, patchFile);
-    return 0;
+    return ret;
 }
