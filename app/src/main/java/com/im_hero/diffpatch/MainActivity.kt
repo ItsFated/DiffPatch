@@ -4,6 +4,7 @@ import android.Manifest
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.im_hero.diffpatch.java.Permissions
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var permissions: Permissions
@@ -19,6 +20,9 @@ class MainActivity : AppCompatActivity() {
                 .setDefaultPermissionsShowRationale(pHandler)
         permissionsHandler = pHandler
         permissions.request(Manifest.permission.INTERNET, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+        tvCurrentVersionCode.text = getString(R.string.format_version_code, App.versionCode)
+        tvCurrentVersionName.text = getString(R.string.format_version_name, App.versionName)
     }
 
     inner class PermissionsHandler: Permissions.PermissionsDenied, Permissions.PermissionsShowRationale, Permissions.PermissionsGranted{

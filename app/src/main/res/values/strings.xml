@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DiffPatch</string>
+    <string name="current_info">Current Infos:</string>
+    <string name="update">Update</string>
+    <string name="format_version_code">VersionCode: %d</string>
+    <string name="format_version_name">VersionName: %s</string>
+    <string name="please_holder_no_info">--</string>
 </resources>
