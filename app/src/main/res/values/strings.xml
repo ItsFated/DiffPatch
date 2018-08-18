@@ -6,4 +6,6 @@
     <string name="format_version_name">VersionName: %s</string>
     <string name="please_holder_no_info">--</string>
     <string name="latest_infos">Latest Infos:</string>
+    <string name="format_patch_file">Patch File: %s</string>
+    <string name="need_permission_to_install_apk">Need permissions to install apk</string>
 </resources>
