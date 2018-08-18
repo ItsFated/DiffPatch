@@ -18,6 +18,10 @@ object HttpUtils {
     const val GET_LATEST_VERSION = "/app/latest-version"
     const val GET_LATEST_PATCH = "/app/get-apk-patch"
 
+    /**
+     * 获取服务器当前版本信息,JSON格式：
+     * {"versionCode":2,"versionName":"DiffPatch 1.1"}
+     */
     fun getLatestVersion(): JSONObject {
         val json: JSONObject
         val url = URL("$HOST_URL$GET_LATEST_VERSION")
@@ -33,7 +37,12 @@ object HttpUtils {
         return json
     }
 
+    /**
+     * 通过DownloadManager下载Patch文件（注意：URL中需要附加当前版本号），如：
+     * http://192.168.18.38:8080/app/get-apk-patch?current-version-code=1
+     */
     fun downloadLatestPatch(context: Context, patchFileName: String): Long {
+        // 注意：URL中需要附加当前版本号
         val request = DownloadManager.Request(Uri.parse("$HOST_URL$GET_LATEST_PATCH?current-version-code=${App.versionCode}"))
 //        request.setDestinationUri(Uri.fromFile(File(context.cacheDir, patchFileName)))
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, patchFileName)
