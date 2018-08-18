@@ -4,10 +4,14 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
+import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 import android.util.SparseArray;
 
 import java.lang.ref.WeakReference;
@@ -235,6 +239,24 @@ public class Permissions {
             fm.executePendingTransactions();
         }
         return f;
+    }
+
+    /**
+     * 如果为8.0以上系统，则判断是否有未知应用安装权限
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static boolean hasInstallPermissionWithO(Context context){
+        return context.getPackageManager().canRequestPackageInstalls();
+    }
+
+    /**
+     * 开启设置安装未知来源应用权限界面
+     */
+    @RequiresApi (api = Build.VERSION_CODES.O)
+    public static void requestInstallPermissionSettingActivity(Activity aty, int requestCode) {
+        Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
+        intent.setData(Uri.fromParts("package", aty.getPackageName(), null));
+        aty.startActivityForResult(intent, requestCode);
     }
 
     /**
